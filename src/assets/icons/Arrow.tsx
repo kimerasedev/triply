@@ -1,7 +1,6 @@
-type ArrowProps = {
+interface ArrowProps {
   className?: string; // Tailwind 색상 클래스 전달용
-};
-
+}
 export default function ArrowIcon({ className = "" }: ArrowProps) {
   return (
     <svg
