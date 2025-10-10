@@ -1,22 +1,23 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import Layout from "@/components/common/Layout";
 
 // GmarketSans 폰트
 const gmarketSans = localFont({
   src: [
     {
-      path: "./fonts/GmarketSansLight.otf",
+      path: "../assets/fonts/GmarketSansLight.otf",
       weight: "300",
       style: "normal",
     },
     {
-      path: "./fonts/GmarketSansMedium.otf",
+      path: "../assets/fonts/GmarketSansMedium.otf",
       weight: "500",
       style: "normal",
     },
     {
-      path: "./fonts/GmarketSansBold.otf",
+      path: "../assets/fonts/GmarketSansBold.otf",
       weight: "700",
       style: "normal",
     },
@@ -38,7 +39,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={`${gmarketSans.variable}`}>
-      <body>{children}</body>
+      <body>
+        <Layout>{children}</Layout>
+      </body>
     </html>
   );
 }
