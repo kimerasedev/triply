@@ -1,9 +1,19 @@
+import HeroSection from "@/components/home/HeroSection";
+import ServiceIntroSection from "@/components/home/ServiceIntroSection";
+import ServiceDetailSection from "@/components/home/ServiceDetailSection";
+import WorldMapSection from "@/components/home/WorldMapSection";
+import LogoLoopSection from "@/components/home/LogoLoopSection";
+import CommunitySection from "@/components/home/CommunitySection";
+
 export default function Home() {
   return (
-    <>
-      <p className="font-bold text-primary">폰트 bold</p>
-      <p className="font-light text-secondary">폰트 light</p>
-      <p className="font-medium text-text-secondary">폰트 medium</p>
-    </>
+    <main className="w-full">
+      <HeroSection />
+      <ServiceIntroSection />
+      <ServiceDetailSection />
+      <WorldMapSection />
+      <LogoLoopSection />
+      <CommunitySection />
+    </main>
   );
 }
