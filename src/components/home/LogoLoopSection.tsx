@@ -24,7 +24,7 @@ const flagLogos = [
 export default function LogoLoopSection() {
   return (
     <div
-      className="mt-8"
+      className="mt-2"
       style={{ height: "200px", position: "relative", overflow: "hidden" }}
     >
       <LogoLoop

@@ -4,6 +4,12 @@
   font-family: var(--font-gmarketSans);
 }
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
 /* Tailwind 테마 변수 */
 @theme {
   --color-primary: #163300;
@@ -11,4 +17,38 @@
   --color-text-primary: #212121;
   --color-text-secondary: #757575;
   --color-border: #e0e0e0;
+}
+
+/* 메인 페이지의 지도 섹션 애니메이션 */
+@keyframes triply-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+.animate-blink {
+  animation: triply-blink 1.2s infinite;
+}
+
+@keyframes triply-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  80%,
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+.ring-ping::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  border: 2px solid currentColor;
+  animation: triply-ping 1.5s infinite;
 }

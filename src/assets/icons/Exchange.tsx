@@ -1,8 +1,8 @@
-interface ExchangeProps {
+interface ExchangeIconProps {
   className?: string; // Tailwind 색상 클래스 전달용
 }
 
-export default function ExchangeIcon({ className = "" }: ExchangeProps) {
+export default function ExchangeIcon({ className = "" }: ExchangeIconProps) {
   return (
     <svg
       width="24"

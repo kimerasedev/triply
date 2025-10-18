@@ -14,7 +14,7 @@ export default function ServiceIntroItem({
   return (
     <div className="w-full flex flex-col justify-center items-center gap-3">
       <div className="border border-[#DEDEDE] rounded-full w-11 h-11 flex items-center justify-center">
-        <Image src={icon} alt={title} width={32} height={32} />
+        <Image src={icon} alt={title} width={24} height={24} />
       </div>
       <h2 className="text-lg text-text-primary">{title}</h2>
       <p className="font-light text-sm text-text-secondary whitespace-nowrap">

@@ -1,11 +1,13 @@
 import Image from "next/image";
 import ServiceDetailItem from "./ServiceDetailItem";
-import imgUrl from "@/assets/images/img.png";
+import plannerUrl from "@/assets/images/planner.svg";
+import exchangeUrl from "@/assets/images/exchange.svg";
+import saveUrl from "@/assets/images/save.svg";
 
 export default function ServiceDetailSection() {
   return (
-    <section className="bg-[#F1F5F7] w-full px-10 py-50">
-      <section className="flex items-center justify-center gap-30 mb-30">
+    <section className="bg-[#F1F5F7] w-full px-44 py-30">
+      <section className="flex items-center justify-between mb-24">
         <ServiceDetailItem
           order="01"
           title={`여행 예산 설계,
@@ -13,17 +15,18 @@ export default function ServiceDetailSection() {
           description="숙소, 식비, 교통비 등 카테고리별로 입력하거나 추천 예산으로 빠르게 계획할 수 있어요."
         />
         <Image
-          src={imgUrl}
-          alt="이미지 임시"
-          width={500}
+          src={plannerUrl}
+          alt="플래너 이미지"
+          width={400}
           className="rounded-2xl"
         />
       </section>
-      <section className="flex items-center justify-center gap-30 mb-30">
+
+      <section className="flex items-center justify-between mb-24">
         <Image
-          src={imgUrl}
-          alt="이미지 임시"
-          width={500}
+          src={exchangeUrl}
+          alt="환율 이미지"
+          width={400}
           className="rounded-2xl"
         />
         <ServiceDetailItem
@@ -32,17 +35,18 @@ export default function ServiceDetailSection() {
           description="매일 갱신되는 최신 기준환율을 바탕으로 여행 경비를 자동으로 환산해드려요."
         />
       </section>
-      <section className="flex items-center justify-center gap-30">
+
+      <section className="flex items-center justify-between">
         <ServiceDetailItem
           order="03"
-          title={`여행자들의 생생한
-                  한 달 살기 경험 공유`}
-          description="각국 여행자들과 실제 비용, 숙소 정보, 팁을 공유해요."
+          title={`내 플랜 저장,
+                  언제든 이어서 계획`}
+          description="여행 예산을 브라우저에 저장해두고 나중에 다시 불러올 수 있어요."
         />
         <Image
-          src={imgUrl}
-          alt="이미지 임시"
-          width={500}
+          src={saveUrl}
+          alt="저장 이미지"
+          width={400}
           className="rounded-2xl"
         />
       </section>
