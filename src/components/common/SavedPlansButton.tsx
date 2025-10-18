@@ -49,7 +49,7 @@ export default function SavedPlansButton() {
             className="absolute inset-0 bg-black/30"
             onClick={() => setOpen(false)}
           />
-          <div className="absolute right-6 top-20 w-[320px] bg-white rounded-2xl shadow-xl p-4">
+          <div className="absolute right-20 top-18 w-[320px] bg-white rounded-2xl shadow-xl p-4">
             <div className="flex items-center justify-between mb-4">
               <p className="text-sm font-semibold text-primary">저장된 플랜</p>
               <button

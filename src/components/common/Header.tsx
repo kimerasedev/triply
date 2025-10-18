@@ -56,7 +56,6 @@ export default function Header() {
   return (
     <header
       className={clsx(
-        // px-20 -> 데스크톱만, 모바일/태블릿은 px-4/px-6
         "fixed top-0 left-0 z-50 w-full transition-colors",
         "px-4 sm:px-6 lg:px-20",
         "flex items-center justify-between",
@@ -120,7 +119,7 @@ export default function Header() {
         )}
       </button>
 
-      {/* 모바일 드롭다운 패널 */}
+      {/* 모바일 드롭다운 */}
       {mobileOpen && (
         <div
           className={clsx(
@@ -153,12 +152,6 @@ export default function Header() {
 
           <div className="border-t border-gray-100 px-4 py-3 flex items-center gap-2">
             <SavedPlansButton />
-            <Link
-              href="/guide"
-              className="text-primary text-xs bg-transparent px-3 py-2 rounded-full border border-primary hover:bg-gray-100"
-            >
-              가이드
-            </Link>
           </div>
         </div>
       )}

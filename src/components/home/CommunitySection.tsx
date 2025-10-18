@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import CommunityCard from "./CommunityCard";
 import ArrowIcon from "@/assets/icons/Arrow";
 
@@ -42,12 +42,23 @@ const communityCardData = [
   },
 ];
 
-const CARD_W = 260; // 카드 너비(px): CommunityCard와 동일
-const GAP = 12; // 카드 사이 간격(px): gap-x-*와 맞추기
-const VISIBLE = 1; // 한 화면에 보일 카드 개수
+/* 데스크톱 슬라이더에서 사용하는 카드 너비/간격(px) */
+const CARD_W = 260;
+const GAP = 12;
+const VISIBLE = 1; // 화면에 보일 카드 개수 (한 장씩)
 
 export default function CommunitySection() {
   const [index, setIndex] = useState(0);
+
+  // md 이상일 때만 버튼 슬라이더 사용
+  const [isMdUp, setIsMdUp] = useState(false);
+  useEffect(() => {
+    const mm = window.matchMedia("(min-width: 768px)");
+    const update = () => setIsMdUp(mm.matches);
+    update();
+    mm.addEventListener?.("change", update);
+    return () => mm.removeEventListener?.("change", update);
+  }, []);
 
   const maxIndex = useMemo(
     () => Math.max(0, communityCardData.length - VISIBLE),
@@ -57,35 +68,35 @@ export default function CommunitySection() {
   const handlePrev = () => setIndex((i) => Math.max(0, i - 1));
   const handleNext = () => setIndex((i) => Math.min(maxIndex, i + 1));
 
-  const offset = index * (CARD_W + GAP); // 이동 거리
-
+  const offset = index * (CARD_W + GAP);
   const prevDisabled = index === 0;
   const nextDisabled = index === maxIndex;
 
   return (
-    <section className="w-full px-30 py-20">
-      <div className="flex items-start justify-between gap-20">
-        <div className="shrink-0 w-[360px]">
-          <h2 className="text-4xl font-bold text-text-primary leading-snug">
-            나만의 <br /> 한 달 살기 이야기
+    <section className="w-full px-4 sm:px-8 lg:px-20 py-14 lg:py-20">
+      <div className="flex flex-col lg:flex-row items-start justify-between gap-10 lg:gap-20">
+        {/* 좌측 타이틀/컨트롤 */}
+        <div className="shrink-0 w-full lg:w-[360px]">
+          <h2 className="text-3xl lg:text-4xl font-bold text-text-primary leading-snug">
+            나만의 <br className="hidden sm:block" /> 한 달 살기 이야기
           </h2>
-          <p className="text-text-secondary mt-2 mb-10">
+          <p className="text-text-secondary mt-2 mb-6 lg:mb-10 text-sm">
             전 세계 여행자들의 한 달 살기 경험을 공유해요.
           </p>
 
-          <div className="flex gap-3">
+          {/* 컨트롤: md 이상에서만 표시 */}
+          <div className="hidden md:flex gap-3">
             <button
               onClick={handlePrev}
               disabled={prevDisabled}
               aria-label="이전 카드"
-              className={`w-16 h-16 rounded-full flex items-center justify-center transition-colors
+              className={`w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center transition-colors
                 ${
                   prevDisabled ? "bg-gray-100" : "bg-secondary hover:opacity-90"
-                }
-              `}
+                }`}
             >
               <ArrowIcon
-                className={`rotate-180 scale-125 ${
+                className={`rotate-180 ${
                   prevDisabled ? "text-gray-400" : "text-primary"
                 }`}
               />
@@ -95,39 +106,54 @@ export default function CommunitySection() {
               onClick={handleNext}
               disabled={nextDisabled}
               aria-label="다음 카드"
-              className={`w-16 h-16 rounded-full flex items-center justify-center transition-colors
+              className={`w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center transition-colors
                 ${
                   nextDisabled ? "bg-gray-100" : "bg-secondary hover:opacity-90"
-                }
-              `}
+                }`}
             >
               <ArrowIcon
-                className={`scale-125 ${
-                  nextDisabled ? "text-gray-400" : "text-primary"
-                }`}
+                className={`${nextDisabled ? "text-gray-400" : "text-primary"}`}
               />
             </button>
           </div>
         </div>
 
-        {/* 카드 슬라이더 */}
-        <div className="relative grow overflow-hidden">
-          <div
-            className="flex gap-x-3 transition-transform duration-300 ease-out"
-            style={{
-              transform: `translateX(-${offset}px)`,
-              // 트랙 최소 너비 확보 (안 튕기게)
-              minWidth: (CARD_W + GAP) * communityCardData.length - GAP,
-            }}
-          >
-            {communityCardData.map((item, i) => (
-              <CommunityCard
-                key={i}
-                flag={item.flag}
-                content={item.content}
-                variant={i % 2 === 0 ? "primary" : "secondary"}
-              />
-            ))}
+        {/* 카드 트랙 */}
+        <div className="relative grow w-full">
+          {/* md 미만: 스와이프(가로 스크롤 + snap) 모드 */}
+          <div className="md:hidden overflow-x-auto -mx-4 px-4">
+            <div className="flex gap-3 snap-x snap-mandatory">
+              {communityCardData.map((item, i) => (
+                <div key={i} className="snap-start shrink-0">
+                  <CommunityCard
+                    flag={item.flag}
+                    content={item.content}
+                    variant={i % 2 === 0 ? "primary" : "secondary"}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* md 이상: 버튼 슬라이더(translateX) 모드 */}
+          <div className="hidden md:block overflow-hidden">
+            <div
+              className="flex gap-x-3 transition-transform duration-300 ease-out"
+              style={{
+                transform: `translateX(-${offset}px)`,
+                minWidth: (CARD_W + GAP) * communityCardData.length - GAP,
+              }}
+              aria-live="polite"
+            >
+              {communityCardData.map((item, i) => (
+                <CommunityCard
+                  key={i}
+                  flag={item.flag}
+                  content={item.content}
+                  variant={i % 2 === 0 ? "primary" : "secondary"}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

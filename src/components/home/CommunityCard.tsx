@@ -3,7 +3,7 @@ import Image from "next/image";
 interface CommunityCardProps {
   flag: string;
   content: string;
-  variant?: "primary" | "secondary"; // 배경색 타입
+  variant?: "primary" | "secondary";
 }
 
 export default function CommunityCard({
@@ -12,23 +12,29 @@ export default function CommunityCard({
   variant = "secondary",
 }: CommunityCardProps) {
   const isPrimary = variant === "primary";
-
-  // 배경색 & 폰트색 반대로
   const bgClass = isPrimary ? "bg-primary" : "bg-secondary";
   const textClass = isPrimary ? "text-secondary" : "text-primary";
 
   return (
     <div
-      className={`w-[260px] h-[320px] rounded-2xl p-7 transition-colors duration-300 ${bgClass}`}
+      className={`
+        rounded-2xl p-6 md:p-7 transition-colors duration-300 ${bgClass}
+        w-[220px] h-[280px] sm:w-[240px] sm:h-[300px] md:w-[260px] md:h-[320px]
+        shrink-0
+      `}
     >
       <Image
         src={`/icons/flags/${flag}.svg`}
         alt={flag}
-        width={50}
-        height={50}
+        width={48}
+        height={48}
+        className="sm:w-[50px] sm:h-[50px]"
       />
-
-      <p className={`${textClass} text-sm mt-8 leading-snug`}>{content}</p>
+      <p
+        className={`${textClass} mt-6 md:mt-8 text-[13px] sm:text-sm leading-snug`}
+      >
+        {content}
+      </p>
     </div>
   );
 }

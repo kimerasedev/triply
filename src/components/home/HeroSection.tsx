@@ -45,7 +45,7 @@ export default function HeroSection() {
           className="
             font-bold text-white leading-snug
             [text-shadow:_0_4px_20px_rgba(0,0,0,0.2)]
-            text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[70px]
+            text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[70px] 2xl:text-[80px]
           "
         />
         <TextType
@@ -58,7 +58,7 @@ export default function HeroSection() {
             mt-2 sm:mt-3
             font-bold text-white leading-snug
             [text-shadow:_0_4px_20px_rgba(0,0,0,0.2)]
-            text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[70px]
+            text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[70px] 2xl:text-[80px]
           "
         />
       </div>
