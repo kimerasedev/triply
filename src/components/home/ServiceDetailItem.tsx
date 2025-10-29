@@ -22,7 +22,7 @@ export default function ServiceDetailItem({
         >
           {title}
         </h3>
-        <p className="mt-3 text-sm md:text-base text-text-secondary">
+        <p className="mt-3 text-sm md:text-base text-text-secondary whitespace-pre-line">
           {description}
         </p>
       </div>

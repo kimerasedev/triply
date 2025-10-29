@@ -19,7 +19,8 @@ export default function ServiceDetailSection() {
             order="01"
             title={`여행 예산 설계,
                     더 이상 어렵지 않아요.`}
-            description="숙소, 식비, 교통비 등 카테고리별로 입력하거나 추천 예산으로 빠르게 계획할 수 있어요."
+            description={`숙소, 식비, 교통비 등 카테고리별로 입력하거나
+                          추천 예산으로 빠르게 계획할 수 있어요.`}
           />
           <div className="flex justify-center lg:justify-end">
             <Image
@@ -52,8 +53,10 @@ export default function ServiceDetailSection() {
           </div>
           <ServiceDetailItem
             order="02"
-            title="실시간에 가까운 기준환율로, 더 정확하게."
-            description="매일 갱신되는 최신 기준환율을 바탕으로 여행 경비를 자동으로 환산해드려요."
+            title={`실시간에 가까운 기준환율로,
+                    더 정확하게`}
+            description={`매일 갱신되는 최신 기준환율을 바탕으로 여행 경비를 자동으로
+                          환산해드려요.`}
           />
         </div>
 

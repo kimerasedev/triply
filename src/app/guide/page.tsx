@@ -4,7 +4,7 @@ import guideUrl from "@/assets/images/guide.svg";
 export default function GuidePage() {
   return (
     <section className="bg-[#f4fff0] w-full px-80 py-20">
-      <h1 className="text-3xl font-bold text-primary mb-4">사용 가이드</h1>
+      <h1 className="text-3xl font-bold text-primary mb-4">이용 가이드</h1>
       <div className="flex items-center justify-between">
         <ol className="pl-5 space-y-2 text-sm text-text-primary">
           <li>1. 여행 국가를 선택합니다.</li>
@@ -16,7 +16,7 @@ export default function GuidePage() {
         <Image src={guideUrl} alt="가이드 이미지" width={320} height={100} />
       </div>
 
-      <hr className="my-6 text-text-secondary" />
+      <hr className="my-6 text-gray-200" />
       <p className="text-xs text-text-secondary">
         ※ 한국수출입은행 기준. 영업일 11시 이전 또는 비영업일은 최근 영업일
         기준으로 제공됩니다.

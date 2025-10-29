@@ -12,7 +12,7 @@ export default function Footer() {
             <Image src={logoUrl} alt="logo" width={100} height={30} />
           </Link>
 
-          <nav className="text-primary font-semibold text-[13px] max-[500px]:text-[12px]">
+          <nav className="text-primary text-[13px] max-[500px]:text-[12px]">
             <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 sm:gap-x-8">
               <li>
                 <Link href="/planner" className="hover:underline">
